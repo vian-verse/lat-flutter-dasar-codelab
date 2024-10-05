@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+var informationTextStyle = const TextStyle(fontFamily: 'Oxygen');
+
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
 
@@ -18,7 +21,7 @@ class DetailScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Staatliches',
                   ),
                 ),
                 margin: const EdgeInsets.only(top: 16.0),
@@ -29,24 +32,24 @@ class DetailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Column(
-                      children: const <Widget>[
+                      children: <Widget>[
                         Icon(Icons.calendar_today),
                         SizedBox(height: 8.0,),
-                        Text('Open Everyday'),
+                        Text('Open Everyday', style: informationTextStyle,),
                       ],
                     ),
                     Column(
-                      children: const <Widget>[
+                      children: <Widget>[
                         Icon(Icons.access_time),
                         SizedBox(height: 8.0,),
-                        Text('09:00-20:00'),
+                        Text('09:00-20:00', style: informationTextStyle,),
                       ],
                     ),
                     Column(
-                      children: const <Widget>[
+                      children: <Widget>[
                         Icon(Icons.monetization_on),
                         SizedBox(height: 8.0,),
-                        Text('Rp. 25.000'),
+                        Text('Rp. 25.000', style: informationTextStyle,),
                       ],
                     ),
                   ],
