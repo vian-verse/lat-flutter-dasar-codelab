@@ -1,6 +1,8 @@
 # wisatabandung
 
 A new Flutter project.
+Project dari course "Belajar Membuat Aplikasi Flutter untuk Pemula" platform dicoding.
+Codelab 1.
 
 ## Getting Started
 
