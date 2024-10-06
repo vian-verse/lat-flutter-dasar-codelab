@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wisatabandung/model/tourism_place.dart';
 
-
 var informationTextStyle = const TextStyle(fontFamily: 'Oxygen');
 
 class DetailScreen extends StatelessWidget {
@@ -17,18 +16,25 @@ class DetailScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Stack(children:<Widget>[
+              Stack(children: <Widget>[
                 Image.asset(place.imageAsset),
-                SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
+                SafeArea(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
                         backgroundColor: Colors.grey,
                         child: IconButton(
-                            onPressed: (){Navigator.pop(context);},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             icon: Icon(Icons.arrow_back)),
                       ),
-                    ))
+                      const FavoriteButton(),
+                    ],
+                  ),
+                ))
               ]),
               Container(
                 child: Text(
@@ -49,22 +55,37 @@ class DetailScreen extends StatelessWidget {
                     Column(
                       children: <Widget>[
                         Icon(Icons.calendar_today),
-                        SizedBox(height: 8.0,),
-                        Text(place.openDays, style: informationTextStyle,),
+                        SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          place.openDays,
+                          style: informationTextStyle,
+                        ),
                       ],
                     ),
                     Column(
                       children: <Widget>[
                         Icon(Icons.access_time),
-                        SizedBox(height: 8.0,),
-                        Text( place.openTime, style: informationTextStyle,),
+                        SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          place.openTime,
+                          style: informationTextStyle,
+                        ),
                       ],
                     ),
                     Column(
                       children: <Widget>[
                         Icon(Icons.monetization_on),
-                        SizedBox(height: 8.0,),
-                        Text(place.ticketPrice, style: informationTextStyle,),
+                        SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          place.ticketPrice,
+                          style: informationTextStyle,
+                        ),
                       ],
                     ),
                   ],
@@ -101,5 +122,30 @@ class DetailScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  const FavoriteButton({super.key});
+
+  @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          setState(() {
+            isFavorite = !isFavorite;
+          });
+        },
+        icon: Icon(
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+        ));
   }
 }
